@@ -3,5 +3,6 @@
 # diretório de dependêcias
 node_modules/
 
+
 #arquivo de variáveis de ambiente
 .env
