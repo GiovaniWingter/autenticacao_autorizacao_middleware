@@ -35,10 +35,10 @@ gravarUsuAutenticado = async (req, res, next) => {
                 };
             }
         } else {
-            var autenticado = null;
+            var autenticado =  { autenticado: null, id: null, tipo: null };
         }
     } else {
-        var autenticado = null;
+        var autenticado =  { autenticado: null, id: null, tipo: null };
     }
     req.session.autenticado = autenticado;
     next();
