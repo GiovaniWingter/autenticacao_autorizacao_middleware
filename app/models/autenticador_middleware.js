@@ -18,6 +18,7 @@ limparSessao = (req, res, next) => {
 }
 
 gravarUsuAutenticado = async (req, res, next) => {
+    var autenticado =  { autenticado: null, id: null, tipo: null };
     erros = validationResult(req)
     if (erros.isEmpty()) {
         var dadosForm = {
@@ -34,12 +35,8 @@ gravarUsuAutenticado = async (req, res, next) => {
                     tipo: results[0].tipo_usuario
                 };
             }
-        } else {
-            var autenticado =  { autenticado: null, id: null, tipo: null };
-        }
-    } else {
-        var autenticado =  { autenticado: null, id: null, tipo: null };
-    }
+        } 
+    } 
     req.session.autenticado = autenticado;
     next();
 }
