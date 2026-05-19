@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const usuario = require("./usuarioModel");
+const usuario = require("../models/usuarioModel");
 const bcrypt = require("bcryptjs");
 
 verificarUsuAutenticado = (req, res, next) => {
@@ -44,7 +44,7 @@ gravarUsuAutenticado = async (req, res, next) => {
 verificarUsuAutorizado = (tipoPermitido, destinoFalha) => {
     return (req, res, next) => {
         if (req.session.autenticado.autenticado != null &&
-            tipoPermitido.find(function (element) { return element == req.session.autenticado.tipo }) != undefined) {
+            tipoPermitido.find( (element)=> { return element == req.session.autenticado.tipo }) != undefined) {
             next();
         } else {
             res.render(destinoFalha, req.session.autenticado);

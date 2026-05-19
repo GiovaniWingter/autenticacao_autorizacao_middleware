@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const { verificarUsuAutenticado, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado } = require("../models/autenticador_middleware");
+const { verificarUsuAutenticado, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado } = require("../middlewares/autenticadorMiddleware");
 
 const usuarioController = require("../controllers/usuarioController")
 
