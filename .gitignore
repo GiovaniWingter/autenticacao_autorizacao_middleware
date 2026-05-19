@@ -2,7 +2,7 @@
 
 # diretório de dependêcias
 node_modules/
-
+package-lock.json
 
 #arquivo de variáveis de ambiente
 .env
