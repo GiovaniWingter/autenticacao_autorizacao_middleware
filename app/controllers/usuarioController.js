@@ -62,4 +62,4 @@ const usuarioController = {
     }
 }
 
-module.exports = usuarioController
+module.exports = {usuarioController}
