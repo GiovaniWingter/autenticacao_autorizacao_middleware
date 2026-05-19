@@ -6,7 +6,7 @@ const { verificarUsuAutenticado, limparSessao, gravarUsuAutenticado, verificarUs
 const {usuarioController}   = require("../controllers/usuarioController")
 
 router.get("/", verificarUsuAutenticado, function (req, res) {
-  res.render("pages/index", req.session.autenticado);
+  res.render("pages/index", { autenticado: req.session.autenticado });
 });
 
 router.get("/sair", limparSessao, function (req, res) {
@@ -37,7 +37,7 @@ router.get(
   "/adm",
   verificarUsuAutorizado([2, 3], "pages/restrito"),
   function (req, res) {
-    res.render("pages/adm", req.session.autenticado);
+    res.render("pages/adm", { autenticado: req.session.autenticado });
   });
 
 module.exports = router
