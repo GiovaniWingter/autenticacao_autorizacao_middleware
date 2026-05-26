@@ -29,7 +29,7 @@ gravarUsuAutenticado = async (req, res, next) => {
     next();
 }
 
-verificarUsuAutenticado = (req, res, next) => {
+inicializarSessao = (req, res, next) => {
     if (!req.session.autenticado) {
         req.session.autenticado = { usuLogado: null, id: null, tipo: null };
     }
@@ -53,5 +53,5 @@ verificarUsuAutorizado = (tipoPermitido, destinoFalha) => {
 }
 
 module.exports = {
-    verificarUsuAutenticado, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado
+    inicializarSessao, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado
 }

@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 
-const { verificarUsuAutenticado, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado } = require("../middlewares/autenticadorMiddleware");
+const { inicializarSessao, limparSessao, gravarUsuAutenticado, verificarUsuAutorizado } = require("../middlewares/autenticadorMiddleware");
 
 const {usuarioController}   = require("../controllers/usuarioController")
 
-router.get("/", verificarUsuAutenticado, function (req, res) {
+router.get("/", inicializarSessao, function (req, res) {
   res.render("pages/index", { autenticado: req.session.autenticado });
 });
 
