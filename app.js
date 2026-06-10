@@ -1,3 +1,4 @@
+const env = require("dotenv").config();
 const express = require("express");
 //Importa o módulo express para criar o servidor web. 
 
@@ -9,7 +10,7 @@ var session = require("express-session");
 
 app.use(
   session({
-    secret: "HELLonODE",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false }
@@ -20,7 +21,6 @@ app.use(
 // resave e saveUninitialized controlam o comportamento de salvamento da sessão,
 // e cookie define as opções do cookie de sessão.
 
-const env = require("dotenv").config();
 app.use(express.static("./app/public"));
 
 app.set("view engine", "ejs");
