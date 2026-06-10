@@ -21,8 +21,7 @@ const usuarioController = {
         body("nomeusu_usu")
             .isLength({ min: 8, max: 45 }).withMessage("Nome de usuário deve ter de 8 a 45 caracteres!")
             .custom(async value => {
-                if (!value.isEmpty) {
-                    throw new Error('Campo nome de usuário é obrigatório!'); 
+                if (!value.isEmpty) {                     
                     const nomeUsu = await usuarioModel.findCampoCustom({ 'user_usuario': value });
                     if (nomeUsu > 0) {
                         throw new Error('Nome de usuário em uso!');
