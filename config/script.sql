@@ -134,11 +134,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-<<<<<<< HEAD
 INSERT INTO `usuario` VALUES (1,'Helvética','helvinha','$2a$12$J1piFIoOATeGAlIOPW0HSuo.pWb/tBJabaoyNNMkxwgrLAG70MYFK','helvinh@gmail.com','1234567890123','06386670','13','próx. esquina 2',NULL,NULL,3,1),(2,'Ana Julia','anajulia','$2a$12$PlgVYz2SaOfcKcKt6kqrCevcRMRLZSoIw43cCo8cOF8DNECZ9vgRa','ana@julia.com','112342358923',NULL,NULL,NULL,NULL,NULL,1,1);
-=======
-INSERT INTO `usuario` VALUES (1,'Helvética','helvinha','$2a$12$J1piFIoOATeGAlIOPW0HSuo.pWb/tBJabaoyNNMkxwgrLAG70MYFK','helvinh@gmail.com','1234567890123','06386670','13','próx. esquina 2',NULL,NULL,3,1),(2,'Ana Julia','anajulia','$2a$12$PlgVYz2SaOfcKcKt6kqrCevcRMRLZSoIw43cCo8cOF8DNECZ9vgRa','ana@julia.com','112342358923',NULL,NULL,NULL,NULL,NULL,2,1);
->>>>>>> 990004d1cd803cdf7d60eb95239611f1c5bacdb7
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
