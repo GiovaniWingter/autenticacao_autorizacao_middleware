@@ -1,4 +1,4 @@
-const {usuarioModel} = require("../models/usuarioModel");
+const { usuarioModel } = require("../models/usuarioModel");
 const moment = require("moment");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
@@ -21,19 +21,24 @@ const usuarioController = {
         body("nomeusu_usu")
             .isLength({ min: 8, max: 45 }).withMessage("Nome de usuário deve ter de 8 a 45 caracteres!")
             .custom(async value => {
-                const nomeUsu = await usuario.findCampoCustom({'user_usuario':value});
-                if (nomeUsu > 0) {
-                  throw new Error('Nome de usuário em uso!');
+                if (!value.isEmpty) {
+                    throw new Error('Campo nome de usuário é obrigatório!'); 
+                    const nomeUsu = await usuarioModel.findCampoCustom({ 'user_usuario': value });
+                    if (nomeUsu > 0) {
+                        throw new Error('Nome de usuário em uso!');
+                    }
                 }
-              }),  
+            }),
         body("email_usu")
             .isEmail().withMessage("Digite um e-mail válido!")
             .custom(async value => {
-                const nomeUsu = await usuario.findCampoCustom({'email_usuario':value});
-                if (nomeUsu > 0) {
-                  throw new Error('E-mail em uso!');
+                if (!value.isEmpty) {
+                    const nomeUsu = await usuarioModel.findCampoCustom({ 'email_usuario': value });
+                    if (nomeUsu > 0) {
+                        throw new Error('E-mail em uso!');
+                    }
                 }
-              }), 
+            }),
         body("senha_usu")
             .isStrongPassword()
             .withMessage("A senha deve ter no mínimo 8 caracteres (mínimo 1 letra maiúscula, 1 caractere especial e 1 número)")
@@ -74,4 +79,4 @@ const usuarioController = {
     }
 }
 
-module.exports = {usuarioController}
+module.exports = { usuarioController }
