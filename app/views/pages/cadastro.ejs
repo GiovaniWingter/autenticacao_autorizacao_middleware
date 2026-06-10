@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Hotel IceTown - Cadastro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+
+<body>
+    <% 
+    let msgErro = {"nome_usu":"", "senha_usu":"",nomeusu_usu:"", senha_usu:""}
+    let avisoErro = {"nome_usu":"", "senha_usu":"",nomeusu_usu:"", senha_usu:""}
+    if(listaErros){     
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nome_usu"){
+                avisoErro.nome_usu = "erro";
+                msgErro.nome_usu += " "+itemErro.msg
+            }
+            if(itemErro.path == "senha_usu"){
+                avisoErro.senha_usu = "erro";
+                msgErro.senha_usu = itemErro.msg
+            }
+            if(itemErro.path == "nomeusu_usu"){
+                avisoErro.nomeusu_usu = "erro";
+                msgErro.nomeusu_usu = itemErro.msg
+            }
+            if(itemErro.path == "email_usu"){
+                avisoErro.email_usu = "erro";
+                msgErro.email_usu = itemErro.msg
+            }
+        })
+    }
+    %>
+    <main>
+        <div class="login-page">
+
+            <div class="form-cadastro">
+                <form class="register-form" method="post" action="/cadastro">
+                    <h2>Cadastro</h2>
+                    <input type="text" placeholder="Nome" name="nome_usu" value="<%= valores.nome_usu %>" class="<%= avisoErro.nome_usu %>"/> 
+                    <span> <%= msgErro.nome_usu %> </span><br>
+                    <input type="text" placeholder="Nome de usuário" name="nomeusu_usu" value="<%= valores.nomeusu_usu %>" class="<%= avisoErro.nomeusu_usu %>"/>
+                    <span> <%= msgErro.nomeusu_usu %> </span><br>
+                    <input type="text" placeholder="e-mail " name="email_usu" value="<%= valores.email_usu %>" class="<%= avisoErro.email_usu %>"/>
+                    <span> <%= msgErro.email_usu %> </span><br>
+                    <input type="password" placeholder="senha" name="senha_usu" value="<%= valores.senha_usu %>" class="<%= avisoErro.senha_usu %>"/>
+                    <span> <%= msgErro.senha_usu %> </span><br>
+                    <button type="submit">Cadastrar</button><br>
+                    <p class="message">Já é cadastrado? <a href="/login">Entre</a></p>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+
+</body>

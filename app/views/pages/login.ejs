@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/toast.js"></script>
+    <!-- CSS -->
+    <!-- https://github.com/simple-notify/simple-notify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <% 
+            let avisoErro = {"nome_usu":"", "senha_usu":""}
+            let msgErro = {"nome_usu":"", "senha_usu":""}
+                if(listaErros){
+                    listaErros.errors.forEach(function(itemErro){
+                        if(itemErro.path == "nome_usu"){
+                            avisoErro.nome_usu = "erro";
+                            msgErro.nome_usu = itemErro.msg
+                        }
+                        if(itemErro.path == "senha_usu"){
+                            avisoErro.senha_usu = "erro";
+                            msgErro.senha_usu = itemErro.msg
+                        }
+                    })
+                }
+       %>
+                <div class="login-page">
+                    <div class="form-cadastro">
+                        <h2>Login</h2>
+                        <form action="/login" method="post">
+                            <input type="text" name="nome_usu" placeholder="Nome de usuáio ou e-mail"
+                                class="<%= avisoErro.nome_usu %>" /><br>
+                            <span>
+                                <%= msgErro.nome_usu %>
+                            </span><br>
+                            <input type="password" name="senha_usu" placeholder="senha"
+                                class="<%=  avisoErro.senha_usu %>" /><br>
+                            <span>
+                                <%= msgErro.senha_usu %>
+                            </span><br>
+                            <button type="submit">Entrar</button><br>
+                        </form>
+                        <p class="message">Não é cadastrado? <a href="/cadastro">Crie uma conta</a></p>
+                    </div>
+                </div>
+    </main>
+
+</body>
+
+</html>
