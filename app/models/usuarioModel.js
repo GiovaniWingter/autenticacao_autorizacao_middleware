@@ -48,17 +48,24 @@ const usuarioModel = {
 
     findCampoCustom: async (criterioWhere) => {
         try {
+            const campos = Object.keys(criterioWhere);
+            const valores = Object.values(criterioWhere);
+
+            const where = campos
+                .map(campo => `${campo} = ?`)
+                .join(' AND ');
+
             const [resultados] = await pool.query(
-                "SELECT count(*) totalReg FROM usuario WHERE ?",
-                [criterioWhere]
-            )
+                `SELECT count(*) as totalReg FROM usuario WHERE ${where}`,
+                valores
+            );
             return resultados[0].totalReg;
         } catch (error) {
             console.log(error);
             return error;
         }
     },
-    
+
     create: async (camposForm) => {
         try {
             const [resultados] = await pool.query(
