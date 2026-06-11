@@ -48,7 +48,7 @@ const usuarioController = {
         if (!erros.isEmpty()) {
             return res.render("pages/login", { listaErros: erros })
         }
-        if (req.session.autenticado != null) {
+        if (req.session.autenticado && req.session.autenticado.usuLogado != null) {
             res.redirect("/");
         } else {
             res.render("pages/login", { listaErros: erros })
